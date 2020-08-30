@@ -1,0 +1,10 @@
+{
+    "name": "ChargeCaptainShotgun",
+    "version_number": "{VERSION}",
+    "website_url": "https://github.com/Vl4dimyr/ChargeCaptainShotgun",
+    "description": "This mod ...",
+    "dependencies": [
+        "bbepis-BepInExPack-5.3.1",
+        "tristanmcpherson-R2API-2.5.7"
+    ]
+}
