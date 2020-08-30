@@ -10,9 +10,9 @@ The modes can be selected using the number keys 1, 2 and 3. The current mode is 
 
 | Mode       | Key | Description | Screenshot |
 |------------|-----|-------------|------------|
-| Normal     |  1  | The default mode/behavior of the captain's shotgun | ![normal](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_normal.png)
-| Auto       |  2  | Automatically fires as long as the fire key is pressed | ![auto](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_auto.png)
-| AutoCharge |  3  | Automatically fires after charging as long as the fire key is pressed | ![auto_charge](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_auto_charge.png)
+| Normal     |  1  | The default mode/behavior of the captain's shotgun | ![normal](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_normal.jpg)
+| Auto       |  2  | Automatically fires as long as the fire key is pressed | ![auto](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_auto.jpg)
+| AutoCharge |  3  | Automatically fires after charging as long as the fire key is pressed | ![auto_charge](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_auto_charge.jpg)
 
 > I will add controller support if enough players want it! [let me know](https://github.com/Vl4dimyr/CaptainShotgunModes/issues).
 
