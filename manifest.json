@@ -1,7 +1,7 @@
 {
-    "name": "ChargeCaptainShotgun",
+    "name": "CaptainShotgunModes",
     "version_number": "{VERSION}",
-    "website_url": "https://github.com/Vl4dimyr/ChargeCaptainShotgun",
+    "website_url": "https://github.com/Vl4dimyr/CaptainShotgunModes",
     "description": "This mod ...",
     "dependencies": [
         "bbepis-BepInExPack-5.3.1",
