@@ -14,7 +14,7 @@ The modes can be selected using the number keys 1, 2 and 3. The current mode is 
 | Auto       |  2  | Automatically fires as long as the fire key is pressed | ![auto](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_auto.jpg)
 | AutoCharge |  3  | Automatically fires after charging as long as the fire key is pressed | ![auto_charge](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/sc_auto_charge.jpg)
 
-> I will add controller support if enough players want it! [let me know](https://github.com/Vl4dimyr/CaptainShotgunModes/issues).
+> I will add controller support if enough players want it! [let me know](https://github.com/Vl4dimyr/CaptainShotgunModes/issues/1).
 
 ## Manual Install
 
