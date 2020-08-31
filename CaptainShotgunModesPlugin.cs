@@ -51,7 +51,8 @@ namespace CaptainShotgunModes
             {
                 orig.Invoke(self);
 
-                if (self.GetFieldValue<bool>("released")) {
+                if (self.GetFieldValue<bool>("released"))
+                {
                     fixedAge = 0;
                 }
             }
@@ -59,8 +60,8 @@ namespace CaptainShotgunModes
         
         private void AutoFireMode()
         {
-            bool didFire = false;
-            bool released = self.GetFieldValue<bool>("released");
+            var didFire = false;
+            var released = self.GetFieldValue<bool>("released");
 
             if (!released)
             {
@@ -79,9 +80,9 @@ namespace CaptainShotgunModes
         
         private void AutoFireChargeMode()
         {
-            bool didFire = false;
-            bool released = self.GetFieldValue<bool>("released");
-            float chargeDuration = self.GetFieldValue<float>("chargeDuration");
+            var didFire = false;
+            var released = self.GetFieldValue<bool>("released");
+            var chargeDuration = self.GetFieldValue<float>("chargeDuration");
 
             if (!released && fixedAge >= chargeDuration)
             {
