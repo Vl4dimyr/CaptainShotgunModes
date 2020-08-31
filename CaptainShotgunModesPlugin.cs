@@ -47,14 +47,11 @@ namespace CaptainShotgunModes
         
         private void SingleFireMode()
         {
-            if (fireMode.Equals(FireMode.Normal))
-            {
-                orig.Invoke(self);
+            orig.Invoke(self);
 
-                if (self.GetFieldValue<bool>("released"))
-                {
-                    fixedAge = 0;
-                }
+            if (self.GetFieldValue<bool>("released"))
+            {
+                fixedAge = 0;
             }
         }
         
@@ -103,12 +100,12 @@ namespace CaptainShotgunModes
         {
             orig.Invoke(self);
 
-            if (self.targetSkill && self.targetSkillSlot.Equals(SkillSlot.Primary))
+            if (self.targetSkill && self.targetSkillSlot == SkillSlot.Primary)
             {
                 SurvivorIndex survivorIndex =
                     SurvivorCatalog.GetSurvivorIndexFromBodyIndex(self.targetSkill.characterBody.bodyIndex);
 
-                if (survivorIndex.Equals(SurvivorIndex.Captain))
+                if (survivorIndex == SurvivorIndex.Captain)
                 {
                     self.stockText.gameObject.SetActive(true);
                     self.stockText.fontSize = 12f;
