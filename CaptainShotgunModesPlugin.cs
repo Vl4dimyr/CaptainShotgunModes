@@ -82,17 +82,25 @@ namespace CaptainShotgunModes
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                fireMode = FireMode.Normal;
-            }
+                switch (fireMode)
+                {
+                    case FireMode.Normal:
+                        fireMode = FireMode.Auto;
+                        break;
 
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                fireMode = FireMode.Auto;
-            }
+                    case FireMode.Auto:
+                        fireMode = FireMode.AutoCharge;
+                        break;
 
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                fireMode = FireMode.AutoCharge;
+                    case FireMode.AutoCharge:
+                        fireMode = FireMode.Normal;
+                        break;
+
+                    default:
+                        // this fire mode isn't implemented yet!
+                        fireMode = FireMode.Normal;
+                        break;
+                }
             }
 
             // TODO: add gamepad button to cycle through fire modes
