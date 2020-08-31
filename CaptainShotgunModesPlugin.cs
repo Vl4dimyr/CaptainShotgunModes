@@ -23,6 +23,30 @@ namespace CaptainShotgunModes
         {
             fixedAge += Time.fixedDeltaTime;
 
+            switch (fireMode)
+            {
+                case FireMode.Normal:
+                    FireSingleMode();
+                    break;
+
+                case FireMode.Auto:
+                    FireAutoMode();
+                    break;
+                
+                case FireMode.AutoCharge:
+                    FireAutoChargeMode();
+                    break;
+
+                default:
+                    // ERROR: fire mode isn't implemented yet
+                    // fallback to single fire mode
+                    FireModeSingle();
+                    break;
+            }
+        }
+        
+        private void SingleFireMode()
+        {
             if (fireMode.Equals(FireMode.Normal))
             {
                 orig.Invoke(self);
@@ -30,16 +54,36 @@ namespace CaptainShotgunModes
                 if (self.GetFieldValue<bool>("released")) {
                     fixedAge = 0;
                 }
+            }
+        }
+        
+        private void AutoFireMode()
+        {
+            bool didFire = false;
+            bool released = self.GetFieldValue<bool>("released");
 
-                return;
+            if (!released)
+            {
+                didFire = true;
+                fixedAge = 0;
+                self.SetFieldValue("released", true);
             }
 
+            orig.Invoke(self);
+
+            if (didFire)
+            {
+                self.SetFieldValue("released", false);
+            }
+        }
+        
+        private void AutoFireChargeMode()
+        {
             bool didFire = false;
-            bool charge = fireMode.Equals(FireMode.AutoCharge);
             bool released = self.GetFieldValue<bool>("released");
             float chargeDuration = self.GetFieldValue<float>("chargeDuration");
 
-            if (!released && (!charge || (charge && fixedAge >= chargeDuration)))
+            if (!released && fixedAge >= chargeDuration)
             {
                 didFire = true;
                 fixedAge = 0;
@@ -97,7 +141,8 @@ namespace CaptainShotgunModes
                         break;
 
                     default:
-                        // this fire mode isn't implemented yet!
+                        // ERROR: fire mode isn't implemented yet
+                        // fallback to single fire mode
                         fireMode = FireMode.Normal;
                         break;
                 }
