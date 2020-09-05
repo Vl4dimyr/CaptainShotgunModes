@@ -92,46 +92,6 @@ namespace CaptainShotgunModes
             fireMode = newFireMode;
         }
 
-        public void FixedUpdateHook(On_ChargeCaptainShotgun.orig_FixedUpdate orig, ChargeCaptainShotgun self)
-        {
-            fixedAge += Time.fixedDeltaTime;
-
-            switch (fireMode)
-            {
-                case FireMode.Normal:
-                    SingleFireMode(orig, self);
-                    break;
-                case FireMode.Auto:
-                    AutoFireMode(orig, self);
-                    break;
-                case FireMode.AutoCharge:
-                    AutoFireChargeMode(orig, self);
-                    break;
-                default:
-                    // fallback to single fire mode
-                    SingleFireMode(orig, self);
-                    break;
-            }
-        }
-
-        public void UpdateHook(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
-        {
-            orig.Invoke(self);
-
-            if (self.targetSkill && self.targetSkillSlot == SkillSlot.Primary)
-            {
-                int bodyIndex = self.targetSkill.characterBody.bodyIndex;
-                SurvivorIndex survivorIndex = SurvivorCatalog.GetSurvivorIndexFromBodyIndex(bodyIndex);
-
-                if (survivorIndex == SurvivorIndex.Captain)
-                {
-                    self.stockText.gameObject.SetActive(true);
-                    self.stockText.fontSize = 12f;
-                    self.stockText.SetText(fireMode.ToString());
-                }
-            }
-        }
-
         private void InitConfig()
         {
             DefaultMode = Config.Bind<string>(
@@ -216,7 +176,7 @@ namespace CaptainShotgunModes
             CycleFireMode(wheel < 0f);
         }
 
-         private void SelectFireModeWithDPad()
+        private void SelectFireModeWithDPad()
         {
             if (!EnableModeSelectionWithDPad.Value) {
                 return;
@@ -240,6 +200,46 @@ namespace CaptainShotgunModes
             SelectFireModeWithNumberKeys();
             SelectFireModeWithMouseWheel();
             SelectFireModeWithDPad();
+        }
+
+        public void FixedUpdateHook(On_ChargeCaptainShotgun.orig_FixedUpdate orig, ChargeCaptainShotgun self)
+        {
+            fixedAge += Time.fixedDeltaTime;
+
+            switch (fireMode)
+            {
+                case FireMode.Normal:
+                    SingleFireMode(orig, self);
+                    break;
+                case FireMode.Auto:
+                    AutoFireMode(orig, self);
+                    break;
+                case FireMode.AutoCharge:
+                    AutoFireChargeMode(orig, self);
+                    break;
+                default:
+                    // fallback to single fire mode
+                    SingleFireMode(orig, self);
+                    break;
+            }
+        }
+
+        public void UpdateHook(On.RoR2.UI.SkillIcon.orig_Update orig, SkillIcon self)
+        {
+            orig.Invoke(self);
+
+            if (self.targetSkill && self.targetSkillSlot == SkillSlot.Primary)
+            {
+                int bodyIndex = self.targetSkill.characterBody.bodyIndex;
+                SurvivorIndex survivorIndex = SurvivorCatalog.GetSurvivorIndexFromBodyIndex(bodyIndex);
+
+                if (survivorIndex == SurvivorIndex.Captain)
+                {
+                    self.stockText.gameObject.SetActive(true);
+                    self.stockText.fontSize = 12f;
+                    self.stockText.SetText(fireMode.ToString());
+                }
+            }
         }
 
         public void Awake()
