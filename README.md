@@ -76,3 +76,9 @@ The [Changelog](https://github.com/Vl4dimyr/CaptainShotgunModes/blob/master/CHAN
 ## Bugs/Feedback
 
 For bugs or feedback please use [GitHub Issues](https://github.com/Vl4dimyr/CaptainShotgunModes/issues).
+
+## Help me out
+
+[![Patreon](https://cdn.iconscout.com/icon/free/png-64/patreon-2752105-2284922.png)](https://www.patreon.com/vl4dimyr)
+
+It is by no means required, but if you would like to support me head over to [my Patreon](https://www.patreon.com/vl4dimyr).
