@@ -5,6 +5,6 @@
     "description": "This mod allows you to choose between 3 firing modes for the captain's shotgun",
     "dependencies": [
         "bbepis-BepInExPack-5.3.1",
-        "tristanmcpherson-R2API-2.5.7"
+        "tristanmcpherson-R2API-2.5.14"
     ]
 }

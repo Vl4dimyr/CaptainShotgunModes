@@ -14,6 +14,7 @@ namespace CaptainShotgunModes
 
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin("de.userstorm.captainshotgunmodes", "CaptainShotgunModes", "{VERSION}")]
+    [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class CaptainShotgunModesPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<string> DefaultMode { get; set; }
