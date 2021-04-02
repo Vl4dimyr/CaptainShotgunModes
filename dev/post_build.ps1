@@ -6,7 +6,7 @@ $outFolder = $args[2] + 'out\'
 
 $version = Get-Content "$($args[2])VERSION"
 
-Copy-Item $dllFilePath -Destination "$env:APPDATA\r2modmanPlus-local\mods\profiles\$($args[3])\BepInEx\plugins\"
+Copy-Item $dllFilePath -Destination "$env:APPDATA\r2modmanPlus-local\RiskOfRain2\profiles\$($args[3])\BepInEx\plugins\"
 
 Remove-Item -Recurse -Force $outFolder
 

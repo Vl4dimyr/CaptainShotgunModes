@@ -116,7 +116,6 @@ namespace CaptainShotgunModes
                "When set to true modes can be cycled through using the mouse wheel"
             );
 
-
             EnableModeSelectionWithDPad = Config.Bind<bool>(
                "Settings",
                "EnableModeSelectionWithDPad",
@@ -231,10 +230,7 @@ namespace CaptainShotgunModes
 
             if (self.targetSkill && self.targetSkillSlot == SkillSlot.Primary)
             {
-                int bodyIndex = self.targetSkill.characterBody.bodyIndex;
-                SurvivorIndex survivorIndex = SurvivorCatalog.GetSurvivorIndexFromBodyIndex(bodyIndex);
-
-                if (survivorIndex == SurvivorIndex.Captain)
+                if (self.targetSkill.characterBody.baseNameToken == "CAPTAIN_BODY_NAME")
                 {
                     self.stockText.gameObject.SetActive(true);
                     self.stockText.fontSize = 12f;
