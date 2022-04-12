@@ -45,7 +45,7 @@
 	</ItemGroup>
 
   <Target Name="ZipOutputPath" AfterTargets="Build">
-    <ZipDirectory SourceDirectory="$(OutDir)" DestinationFile="$(MSBuildProjectDirectory)\Somefoxxo-CaptainShotgunModes.zip" />
+    <ZipDirectory Overwrite="True" SourceDirectory="$(OutDir)" DestinationFile="$(MSBuildProjectDirectory)\Somefoxxo-CaptainShotgunModes.zip" />
   </Target>
 
 </Project>
