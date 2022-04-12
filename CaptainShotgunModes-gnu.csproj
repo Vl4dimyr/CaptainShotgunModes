@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+    <CopyDocumentationFileToOutputDirectory>False</CopyDocumentationFileToOutputDirectory>
+    <CreateHardLinksForCopyFilesToOutputDirectoryIfPossible>True</CreateHardLinksForCopyFilesToOutputDirectoryIfPossible>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <GenerateDependencyFile>yiff</GenerateDependencyFile>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<OutDir>out</OutDir>
+		
+		<SteamLibraryPath>$(HOME)/.local/share/Steam</SteamLibraryPath>
+		<RoR2InstallPath>$(SteamLibraryPath)/steamapps/common/Risk of Rain 2</RoR2InstallPath>
+		<RoR2AssemblyPath>$(RoR2InstallPath)/Risk of Rain 2_Data/Managed</RoR2AssemblyPath>
+		<BepInExPath>$(HOME)/.config/r2modmanPlus-local/RiskOfRain2/profiles/Default/BepInEx</BepInExPath>
+    <AssemblySearchPaths>
+      $(BepInExPath)/core;
+      $(BepInExPath)/plugins/tristanmcpherson-R2API/R2API;
+      $(BepInExPath)/plugins/RiskofThunder-HookGenPatcher/MMHOOK;
+      $(RoR2AssemblyPath);
+      $(AssemblySearchPaths);
+    </AssemblySearchPaths>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="
+		  Assembly-CSharp;
+		  BepInEx;
+		  MMHOOK_Assembly-CSharp;
+		  R2API;
+		  RoR2;
+		  UnityEngine;
+		  UnityEngine.CoreModule;
+		  UnityEngine.InputLegacyModule;
+		  UnityEngine.UI;
+		  Unity.TextMeshPro;
+		">
+		  <Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>
