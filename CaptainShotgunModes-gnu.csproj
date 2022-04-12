@@ -44,5 +44,8 @@
     <None CopyToOutputDirectory="PreserveNewest" Include="README.md" />
 	</ItemGroup>
 
+  <Target Name="ZipOutputPath" AfterTargets="Build">
+    <ZipDirectory SourceDirectory="$(OutDir)" DestinationFile="$(MSBuildProjectDirectory)\Somefoxxo-CaptainShotgunModes.zip" />
+  </Target>
 
 </Project>
