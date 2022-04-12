@@ -8,6 +8,8 @@
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
     <GenerateDependencyFile>yiff</GenerateDependencyFile>
+    <NoLogo>True</NoLogo>
+    <Optimize>True</Optimize>
     <OutDir>out</OutDir>
     <TargetFramework>netstandard2.0</TargetFramework>
     <TargetName>CaptainShotgunModes</TargetName>
