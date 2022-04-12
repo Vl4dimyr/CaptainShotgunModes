@@ -13,7 +13,7 @@ namespace CaptainShotgunModes
     enum FireMode { Normal, Auto, AutoCharge, Count }
 
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInPlugin("de.userstorm.captainshotgunmodes", "CaptainShotgunModes", "{VERSION}")]
+    [BepInPlugin("de.userstorm.captainshotgunmodes", "CaptainShotgunModes", "1.2.0")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class CaptainShotgunModesPlugin : BaseUnityPlugin
     {

@@ -10,6 +10,7 @@
     <GenerateDependencyFile>yiff</GenerateDependencyFile>
 		<OutDir>out</OutDir>
 		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetName>CaptainShotgunModes</TargetName>
 		
 		<SteamLibraryPath>$(HOME)/.local/share/Steam</SteamLibraryPath>
 		<RoR2InstallPath>$(SteamLibraryPath)/steamapps/common/Risk of Rain 2</RoR2InstallPath>
@@ -45,7 +46,7 @@
 	</ItemGroup>
 
   <Target Name="ZipOutputPath" AfterTargets="Build">
-    <ZipDirectory Overwrite="True" SourceDirectory="$(OutDir)" DestinationFile="$(MSBuildProjectDirectory)\Somefoxxo-CaptainShotgunModes.zip" />
+    <ZipDirectory Overwrite="True" SourceDirectory="$(OutDir)" DestinationFile="Unknown-CaptainShotgunModes.zip" />
   </Target>
 
 </Project>
