@@ -1,7 +1,7 @@
 {
     "name": "CaptainShotgunModes",
-    "version_number": "{VERSION}",
-    "website_url": "https://github.com/Vl4dimyr/CaptainShotgunModes.",
+    "version_number": "1.2.0",
+    "website_url": "https://github.com/Higgs1/CaptainShotgunModes",
     "description": "This mod allows you to choose between 3 firing modes for the captain's shotgun",
     "dependencies": [
         "bbepis-BepInExPack-5.3.1",
