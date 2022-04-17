@@ -6,6 +6,7 @@
     <AssemblySearchPaths>
       $(BepInExPath)\plugins\tristanmcpherson-R2API\R2API;
       $(BepInExPath)\plugins\RiskofThunder-HookGenPatcher\MMHOOK;
+      $(BepInExPath)\plugins\Rune580-Risk_Of_Options;
       $(AssemblySearchPaths);
     </AssemblySearchPaths>
 
@@ -22,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="MMHOOK_Assembly-CSharp;R2API;">
+    <Reference Include="MMHOOK_Assembly-CSharp;R2API;RiskOfOptions;">
       <Private>False</Private>
     </Reference>
     <PackageReference Include="BepInEx.BaseLib" Version="5.4.19" />
