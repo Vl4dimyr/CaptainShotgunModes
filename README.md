@@ -29,10 +29,18 @@ The current mode is displayed above the primary skill icon.
 
 ## Config
 
+### TL;DR
+
+Use [Risk Of Options](https://thunderstore.io/package/Rune580/Risk_Of_Options/) for in-game settings!
+
+![Risk Of Options Screenshot](https://raw.githubusercontent.com/Vl4dimyr/CaptainShotgunModes/master/images/risk_of_options.jpg)
+
+### Manual Config
+
 The config file (`\BepInEx\config\de.userstorm.captainshotgunmodes.cfg`) will be crated automatically when the mod is loaded.
 You need to restart the game for changes to apply in game.
 
-### Example config
+#### Example config
 
 The example config keeps only mode selection with number keys enabled and sets the default mode to `Auto`.
 
