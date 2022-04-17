@@ -10,17 +10,23 @@ using On_ChargeCaptainShotgun = On.EntityStates.Captain.Weapon.ChargeCaptainShot
 
 namespace CaptainShotgunModes
 {
-    enum FireMode { Normal, Auto, AutoCharge, Count }
+    public enum FireMode { Normal, Auto, AutoCharge }
 
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin("de.userstorm.captainshotgunmodes", "CaptainShotgunModes", "{VERSION}")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class CaptainShotgunModesPlugin : BaseUnityPlugin
     {
-        public static ConfigEntry<string> DefaultMode { get; set; }
+        public static ConfigEntry<FireMode> DefaultFireMode { get; set; }
         public static ConfigEntry<bool> EnableModeSelectionWithNumberKeys { get; set; }
         public static ConfigEntry<bool> EnableModeSelectionWithMouseWheel { get; set; }
         public static ConfigEntry<bool> EnableModeSelectionWithDPad { get; set; }
+        public static ConfigEntry<KeyboardShortcut> FireModeNormalKey { get; set; }
+        public static ConfigEntry<KeyboardShortcut> FireModeAutoKey { get; set; }
+        public static ConfigEntry<KeyboardShortcut> FireModeAutoChargeKey { get; set; }
+
+        private static readonly int FireModeCount = Enum.GetNames(typeof(FireMode)).Length;
 
         private FireMode fireMode = FireMode.Normal;
         private float fixedAge = 0;
@@ -80,14 +86,14 @@ namespace CaptainShotgunModes
         {
             FireMode newFireMode = fireMode + (forward ? 1 : -1);
 
-            if (newFireMode == FireMode.Count)
+            if ((int)newFireMode == FireModeCount)
             {
                 newFireMode = FireMode.Normal;
             }
 
             if ((int)newFireMode == -1)
             {
-                newFireMode = FireMode.Count - 1;
+                newFireMode = (FireMode)FireModeCount - 1;
             }
 
             fireMode = newFireMode;
@@ -95,11 +101,11 @@ namespace CaptainShotgunModes
 
         private void InitConfig()
         {
-            DefaultMode = Config.Bind<string>(
+            DefaultFireMode = Config.Bind<FireMode>(
                 "Settings",
-                "DefaultMode",
-                "Normal",
-                "The mode that is selected on game start. Modes: Normal, Auto, AutoCharge"
+                "DefaultFireMode",
+                FireMode.Normal,
+                "The fire mode that is selected on game start."
             );
 
             EnableModeSelectionWithNumberKeys = Config.Bind<bool>(
@@ -122,13 +128,48 @@ namespace CaptainShotgunModes
                true,
                "When set to true modes can be cycled through using the DPad (controller)"
             );
+
+            FireModeNormalKey = Config.Bind<KeyboardShortcut>(
+               "Settings",
+               "FireModeNormalKey",
+               new KeyboardShortcut(KeyCode.Alpha1),
+               "The key that is used to select Normal Mode"
+            );
+
+            FireModeAutoKey = Config.Bind<KeyboardShortcut>(
+               "Settings",
+               "FireModeAutoKey",
+               new KeyboardShortcut(KeyCode.Alpha2),
+               "The key that is used to select Auto Mode"
+            );
+
+            FireModeAutoChargeKey = Config.Bind<KeyboardShortcut>(
+               "Settings",
+               "FireModeAutoChargeKey",
+               new KeyboardShortcut(KeyCode.Alpha3),
+               "The key that is used to select AutoCharge Mode"
+            );
+
+            if (RiskOfOptionsMod.enabled)
+            {
+                RiskOfOptionsMod.Init(
+                    "This mod allows you to choose between 3 firing modes for the captain's shotgun"
+                );
+                RiskOfOptionsMod.AddChoiceOption<FireMode>(DefaultFireMode);
+                RiskOfOptionsMod.AddCheckboxOption(EnableModeSelectionWithNumberKeys);
+                RiskOfOptionsMod.AddCheckboxOption(EnableModeSelectionWithMouseWheel);
+                RiskOfOptionsMod.AddCheckboxOption(EnableModeSelectionWithDPad);
+                RiskOfOptionsMod.AddKeyBindOption(FireModeNormalKey);
+                RiskOfOptionsMod.AddKeyBindOption(FireModeAutoKey);
+                RiskOfOptionsMod.AddKeyBindOption(FireModeAutoChargeKey);
+            }
         }
 
         private void HandleConfig()
         {
             try
             {
-                fireMode = (FireMode)Enum.Parse(typeof(FireMode), DefaultMode.Value);
+                fireMode = DefaultFireMode.Value;
             }
             catch (Exception)
             {
@@ -141,21 +182,23 @@ namespace CaptainShotgunModes
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            // not using IsDown because it doesn't work while moving
+
+            if (Input.GetKeyDown(FireModeNormalKey.Value.MainKey))
             {
                 fireMode = FireMode.Normal;
 
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(FireModeAutoKey.Value.MainKey))
             {
                 fireMode = FireMode.Auto;
 
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(FireModeAutoChargeKey.Value.MainKey))
             {
                 fireMode = FireMode.AutoCharge;
             }
