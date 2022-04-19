@@ -28,7 +28,7 @@
     <EmbeddedResource Include="images/icon.png" LogicalName="icon" />
     <PackageReference Include="BepInEx.BaseLib" Version="*" />
     <PackageReference Include="R2API" Version="*" />
-    <PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.3.1-r.0" />
+    <PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
     <PackageReference Include="UnityEngine.Modules" Version="*" />
     <PackageReference Include="UnityEngine" Version="*" />
   </ItemGroup>
