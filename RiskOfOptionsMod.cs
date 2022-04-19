@@ -1,7 +1,10 @@
 using System;
+using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using BepInEx.Bootstrap;
 using BepInEx.Configuration;
+using UnityEngine;
 using RiskOfOptions;
 using RiskOfOptions.Options;
 using RiskOfOptions.OptionConfigs;
@@ -29,6 +32,20 @@ namespace CaptainShotgunModes
         internal static void Init (string description)
         {
             ModSettingsManager.SetModDescription(description);
+
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("icon")) {
+                Texture2D texture = new Texture2D(0, 0);
+                byte[] imgData = new byte[stream.Length];
+
+                stream.Read(imgData, 0, (int) stream.Length);
+
+                if (ImageConversion.LoadImage(texture, imgData))
+                {
+                    ModSettingsManager.SetModIcon(
+                        Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0))
+                    );
+                }
+            }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
