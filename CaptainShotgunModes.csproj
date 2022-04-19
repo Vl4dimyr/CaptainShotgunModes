@@ -22,15 +22,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="MMHOOK_Assembly-CSharp;RiskOfOptions;">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp;RiskOfOptions" Private="False" />
+    <PackageReference Include="BepInEx.BaseLib;R2API;RiskOfRain2.GameLibs;UnityEngine.Modules;UnityEngine" Version="*-*" />
     <EmbeddedResource Include="images/icon.png" LogicalName="icon" />
-    <PackageReference Include="BepInEx.BaseLib" Version="*" />
-    <PackageReference Include="R2API" Version="*" />
-    <PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
-    <PackageReference Include="UnityEngine.Modules" Version="*" />
-    <PackageReference Include="UnityEngine" Version="*" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
