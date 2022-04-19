@@ -76,6 +76,7 @@ EnableModeSelectionWithDPad = false
 - Install [BepInEx](https://thunderstore.io/package/bbepis/BepInExPack/) and [R2API](https://thunderstore.io/package/tristanmcpherson/R2API/)
 - Download the latest `CaptainShotgunModes_x.y.z.zip` [here](https://thunderstore.io/package/Vl4dimyr/CaptainShotgunModes/)
 - Extract and move the `CaptainShotgunModes.dll` into the `\BepInEx\plugins` folder
+- (optional) Install [Risk Of Options](https://thunderstore.io/package/Rune580/Risk_Of_Options/)
 
 ## Changelog
 

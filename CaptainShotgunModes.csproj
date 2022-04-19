@@ -36,11 +36,13 @@
       UnityEngine.CoreModule;
       UnityEngine.InputLegacyModule;
       UnityEngine.UI;
+      UnityEngine.ImageConversionModule;
       Unity.TextMeshPro;
       RiskOfOptions;
     ">
       <Private>False</Private>
     </Reference>
+    <EmbeddedResource Include="images/icon.png" LogicalName="icon" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
