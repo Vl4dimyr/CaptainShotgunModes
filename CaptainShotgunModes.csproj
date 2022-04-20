@@ -1,15 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RoR2AssemblyPath>E:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed</RoR2AssemblyPath>
     <BepInExPath>$(AppData)\r2modmanPlus-local\RiskOfRain2\profiles\CaptainShotgunModes\BepInEx</BepInExPath>
 
     <AssemblySearchPaths>
-      $(BepInExPath)\core;
-      $(BepInExPath)\plugins\tristanmcpherson-R2API\R2API;
-      $(BepInExPath)\plugins\RiskofThunder-HookGenPatcher\MMHOOK;
       $(BepInExPath)\plugins\Rune580-Risk_Of_Options;
-      $(RoR2AssemblyPath);
       $(AssemblySearchPaths);
     </AssemblySearchPaths>
 
@@ -26,22 +21,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="
-      Assembly-CSharp;
-      BepInEx;
-      MMHOOK_Assembly-CSharp;
+    <Reference Include="RiskOfOptions" Private="False" />
+    <PackageReference NoWarn="NU1701" Version="*-*" Include="
+      BepInEx.BaseLib;
+      MMHOOK.RoR2;
       R2API;
-      RoR2;
+      RiskOfRain2.GameLibs;
       UnityEngine;
-      UnityEngine.CoreModule;
-      UnityEngine.InputLegacyModule;
-      UnityEngine.UI;
-      UnityEngine.ImageConversionModule;
-      Unity.TextMeshPro;
-      RiskOfOptions;
-    ">
-      <Private>False</Private>
-    </Reference>
+      UnityEngine.Modules;
+     " />
     <EmbeddedResource Include="images/icon.png" LogicalName="icon" />
   </ItemGroup>
 
