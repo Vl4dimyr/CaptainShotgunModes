@@ -4,7 +4,6 @@
     <BepInExPath>$(AppData)\r2modmanPlus-local\RiskOfRain2\profiles\CaptainShotgunModes\BepInEx</BepInExPath>
 
     <AssemblySearchPaths>
-      $(BepInExPath)\plugins\RiskofThunder-HookGenPatcher\MMHOOK;
       $(BepInExPath)\plugins\Rune580-Risk_Of_Options;
       $(AssemblySearchPaths);
     </AssemblySearchPaths>
@@ -22,8 +21,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="MMHOOK_Assembly-CSharp;RiskOfOptions" Private="False" />
-    <PackageReference Include="BepInEx.BaseLib;R2API;RiskOfRain2.GameLibs;UnityEngine.Modules;UnityEngine" Version="*-*" />
+    <Reference Include="RiskOfOptions" Private="False" />
+    <PackageReference NoWarn="NU1701" Version="*-*" Include="
+      BepInEx.BaseLib;
+      MMHOOK.RoR2;
+      R2API;
+      RiskOfRain2.GameLibs;
+      UnityEngine;
+      UnityEngine.Modules;
+     " />
     <EmbeddedResource Include="images/icon.png" LogicalName="icon" />
   </ItemGroup>
 
