@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using BepInEx.Bootstrap;
 using BepInEx.Configuration;
@@ -33,18 +32,17 @@ namespace CaptainShotgunModes
         {
             ModSettingsManager.SetModDescription(description);
 
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("icon")) {
-                Texture2D texture = new Texture2D(0, 0);
-                byte[] imgData = new byte[stream.Length];
+            using var stream = GetType().Assembly.GetManifestResourceStream("icon");
+            var texture = new Texture2D(0, 0);
+            var imgData = new byte[stream.Length];
 
-                stream.Read(imgData, 0, (int) stream.Length);
+            stream.Read(imgData, 0, imgData.Length);
 
-                if (ImageConversion.LoadImage(texture, imgData))
-                {
-                    ModSettingsManager.SetModIcon(
-                        Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0))
-                    );
-                }
+            if (ImageConversion.LoadImage(texture, imgData))
+            {
+                ModSettingsManager.SetModIcon(
+                    Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0))
+                );
             }
         }
 
